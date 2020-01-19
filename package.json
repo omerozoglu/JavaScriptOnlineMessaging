@@ -1,0 +1,28 @@
+{
+  "name": "javascriptonlinemessaging",
+  "version": "1.0.0",
+  "description": "JavaScriptOnlineMessaging",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/omerozoglu/JavaScriptOnlineMessaging.git"
+  },
+  "author": "Omer Ozoglu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/omerozoglu/JavaScriptOnlineMessaging/issues"
+  },
+  "homepage": "https://github.com/omerozoglu/JavaScriptOnlineMessaging#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.8.9",
+    "nodemon": "^2.0.2"
+  }
+}
