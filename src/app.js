@@ -10,12 +10,3 @@ require('dotenv/config');
 app.listen(3000);
 
 
-
-/*
-{
-    _id:Number,
-    data:String,
-    user_id:Number,
-    date_time:String;
-
-}*/
