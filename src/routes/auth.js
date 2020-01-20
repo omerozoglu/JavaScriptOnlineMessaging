@@ -40,6 +40,20 @@ router.post('/register', async (req, res) => {
   }
 })
 
+//Login Route
+router.post('/login',async (req,res)=>{
+  //VALIDATE the data
+  const { error } = loginValidation(req.body);
+  if (error) return res.status(400).send(error.details[0].message);
+  //Checking if the username exists
+  const user = await User.findOne({ username: req.body.username });
+  if (!user) return res.status(400).send('Username or password is wrong');
+  //Password is correct
+  const vaildPass = await bcrypt .compare(req.body.password,user.password);
+  if(!vaildPass) return res.status(400).send('Username or password is wrong');
+
+  res.send('Logged in');
+});
 
 
 module.exports = router;
