@@ -24,6 +24,11 @@ const UserSchema= mongoose.Schema({
         type:Number,
         required:false,
         default:0
+    },
+    req_date:{
+        type:Date,
+        required:false,
+        default:Date.now
     }
 })
 
