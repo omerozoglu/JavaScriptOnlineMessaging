@@ -1,25 +1,18 @@
 const router = require('express').Router();
 const User = require('../models/user.model');
+const {loginValidation,registerValidation}=require('../validation');
 
 
 
-//VALIDATION
-const Joi = require('@hapi/joi');
-
-const schema = Joi.object({
-  username: Joi.string().min(6).required(),
-  name: Joi.string().min(6),
-  email: Joi.string().min(6).required().email(),
-  password: Joi.string().min(6).required(),
-  user_level: Joi.number().min(2)
-});
 
 router.post('/register', async (req, res) => {
 
   //VALIDATE the data
-
-  const { error } = await schema.validate(req.body);
+   const {error}=registerValidation(req.body);
   if (error) return res.status(400).send(error.details[0].message);
+  //Checking if the user is already in the database
+  const emailExist = await User.findOne({email:req.body.email});
+  if(emailExist) return res.status(400).send('Email already exists');
 
   const user = new User({
     username: req.body.username,
@@ -36,7 +29,6 @@ router.post('/register', async (req, res) => {
   }
 })
 router.post('/login', async (req, res) => {
-
 });
 
 module.exports = router;
