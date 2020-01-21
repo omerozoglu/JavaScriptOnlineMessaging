@@ -2,8 +2,10 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+var helmet = require("helmet");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+
 //Import Route
 const authRoute = require("./src/routes/auth");
 const messageRoute = require("./src/routes/messages");
@@ -25,6 +27,7 @@ app.get("/", (req, res) => {
 
 //Middleware
 app.use(express.json());
+app.use(helmet());
 
 //Route Middlewares
 app.use("/api/user", authRoute);
