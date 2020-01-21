@@ -1,8 +1,9 @@
 //VALIDATION
 const Joi = require("@hapi/joi");
 
-//Reqister Validation
-
+/*
+  !Reqister Validation
+*/
 const registerValidation = data => {
   const schema = Joi.object({
     username: Joi.string()
@@ -20,8 +21,9 @@ const registerValidation = data => {
   });
   return schema.validate(data);
 };
-//Login Validation
-
+/*
+  !Login Validation
+*/
 const loginValidation = data => {
   const schema = Joi.object({
     username: Joi.string()
@@ -34,5 +36,20 @@ const loginValidation = data => {
   return schema.validate(data);
 };
 
+/*
+    !Messsage Validation
+*/
+
+const messageValidation = data => {
+  const schema = Joi.object({
+    data: Joi.string()
+      .min(1)
+      .max(255),
+    date: Joi.date()
+  });
+  return schema.validate(data);
+};
+
 module.exports.registerValidation = registerValidation;
 module.exports.loginValidation = loginValidation;
+module.exports.messageValidation = messageValidation;
