@@ -34,4 +34,4 @@ app.use("/api/user", authRoute);
 app.use("/api/messages", messageRoute);
 
 //Listening to the server
-app.listen(3000,"https://pure-taiga-84901.herokuapp.com", () => console.log("Server Listening"));
+app.listen(3000, () => console.log("Server Listening"));
