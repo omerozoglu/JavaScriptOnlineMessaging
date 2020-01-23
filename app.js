@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 var helmet = require("helmet");
+var compression = require("compression");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 
@@ -27,6 +28,7 @@ app.get("/", (req, res) => {
 
 //Middleware
 app.use(express.json());
+app.use(compression());
 app.use(helmet());
 
 //Route Middlewares
