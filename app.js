@@ -30,6 +30,7 @@ exports.helloEnvVars = (req, res) => {
       <body>
         <h1>Google Cloud Functions Environment Variables Test</h1>
         <table>
+        
           <tr>
             <th>NAME</th>
             <th>VALUE</th>
