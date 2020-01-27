@@ -46,33 +46,6 @@ mongoose.connect(
     console.info("Connected the DB");
   }
 );
-
-exports.helloEnvVars = (req, res) => {
-  res.send(`<DOCTYPE html>
-    <html>
-      <head>
-        <title>Google Cloud Functions Environment Variables Test</title>
-      </head>
-      <body>
-        <h1>Google Cloud Functions Environment Variables Test</h1>
-        <table>
-        
-          <tr>
-            <th>NAME</th>
-            <th>VALUE</th>
-          </tr>
-          <tr>
-            <td>DB_CONNECTION</td>
-            <td>${process.env.DB_CONNECTION || "UNKNOWN"}</td>
-          </tr>
-          <tr>
-            <td>TOKEN_SECRET</td>
-            <td>${process.env.TOKEN_SECRET || "UNKNOWN"}</td>
-          </tr>
-        </table>
-      </body>
-    </html>`);
-};
 // Root route
 app.get("/", (req, res) => {
   res.send("we are on home");
