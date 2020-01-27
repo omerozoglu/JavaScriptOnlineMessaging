@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
+require("dotenv").config({ path: ".env" });
+
 var helmet = require("helmet");
 var compression = require("compression");
 const bodyParser = require("body-parser");
