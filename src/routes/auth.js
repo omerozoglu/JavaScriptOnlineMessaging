@@ -1,21 +1,23 @@
 const router = require("express").Router();
 const User = require("../models/user.model");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs"); // Optimized bcrypt in JavaScript with zero dependencies. Compatible to the C++ bcrypt binding on node.js and also working in the browser.
+const jwt = require("jsonwebtoken"); // An implementation of JSON Web Tokens.
 const { loginValidation, registerValidation } = require("../validation");
 
-//Register Route
+//* Register Route
 
 router.post("/register", async (req, res) => {
   //VALIDATE the data
   const { error } = registerValidation(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).send({ message: error.details[0].message });
   //Checking if the user is already in the database
-  const usernameExist = await User.findOne({ username: req.body.username });
-  if (usernameExist) return res.status(400).send("Username already exists");
+  const usernameExist = await User.findOne({ message: req.body.username });
+  if (usernameExist)
+    return res.status(400).send({ message: "Username already exists" });
 
   const emailExist = await User.findOne({ email: req.body.email });
-  if (emailExist) return res.status(400).send("Email already exists");
+  if (emailExist)
+    return res.status(400).send({ message: "Email already exists" });
 
   //Hash passwords
   const salt = await bcrypt.genSalt(10);
@@ -33,11 +35,11 @@ router.post("/register", async (req, res) => {
     const savedUser = await user.save();
     res.send({ _id: savedUser._id });
   } catch (error) {
-    res.status(400).send(error);
+    res.status(400).send({ message: error });
   }
 });
 
-//Login Route
+//* Login Route
 router.post("/login", async (req, res) => {
   //VALIDATE the data
   const { error } = loginValidation(req.body);

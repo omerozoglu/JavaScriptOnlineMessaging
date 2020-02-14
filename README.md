@@ -1,4 +1,3 @@
 # JavaScriptOnlineMessaging API
 
-JavaScriptOnlineMessaging API 
-
+JavaScriptOnlineMessaging API
